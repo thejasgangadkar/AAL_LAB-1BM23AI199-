@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+void bruteForcePatternMatch(char text[], char pattern[]) {
+    int n = strlen(text);
+    int m = strlen(pattern);
+	int i;
+    // Traverse the text string
+    for (i = 0; i <= n - m; i++) {
+        int j = 0;
+
+        // Compare the pattern with the current substring of text
+        while (j < m && text[i + j] == pattern[j]) {
+            j++;
+        }
+
+        // If the entire pattern matches
+        if (j == m) {
+            printf("Pattern found at index %d\n", i);
+        }
+    }
+}
+
+int main() {
+    char text[] = "NOBODY NOTICES HIM";
+    char pattern[] = "HIM";
+
+    printf("Text: %s\n", text);
+    printf("Pattern: %s\n", pattern);
+
+    bruteForcePatternMatch(text, pattern);
+    return 0;
+}
